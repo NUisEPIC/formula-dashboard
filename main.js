@@ -32,8 +32,10 @@ var updatePage = function (rsps) {
             pretty += '<dt>' + k + '</dt>' + '<dd>' + targetResponse[k] + '</dd>'
         }
         pretty += '</dl>'
-        $('#preTag').append(pretty);
+        $('#preTag').html(pretty);
     });
+
+    $('#responseCount').text(responses.length);
 }
 
 var getResponses = function () {
