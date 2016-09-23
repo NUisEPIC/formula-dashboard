@@ -27,7 +27,12 @@ var updatePage = function (rsps) {
         var targetElement = e.target.parentElement
         var targetResponse = responses.filter((r) => { return '' + r._id === targetElement.id })[0];
         console.log(targetResponse);
-        $('#preTag').append(JSON.stringify(targetResponse));
+        var pretty = '<dl>'
+        for (let k of Object.keys(targetResponse)) {
+            pretty += '<dt>' + k + '</dt>' + '<dd>' + targetResponse[k] + '</dd>'
+        }
+        pretty += '</dl>'
+        $('#preTag').append(pretty);
     });
 }
 
@@ -65,11 +70,11 @@ var authenticate = function (username, password, callback) {
             getResponses();
             if (getResponsesIntervalId === undefined)
                 getResponsesIntervalId = setInterval(getResponses, interval);
-            callback(true)
+            callback(true);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             console.log(thrownError);
-            callback(false)
+            callback(false);
         }
     });
 }

@@ -22,13 +22,6 @@
             tr~tr {
                 cursor: pointer;
             }
-            pre {
-                white-space: pre-wrap;
-                white-space: -moz-pre-wrap;
-                white-space: -pre-wrap;
-                white-space: -o-pre-wrap;
-                word-wrap: break-word;
-            }
         </style>
     </head>
     <body>
@@ -60,19 +53,19 @@
           </div>
         </div>
 
-        <div style="display:table;width:95%;margin-top:20px;margin-left:2.5%;margin-right:2.5%">
+        <div id="mainBody"; style="display:table;width:100%;margin-top:20px;">
             <div id="tableDiv" style="width:60%;display:table-cell">
-                <table class="responses template" style="width:90%;">
+                <table class="responses template" style="width:95%;">
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
+                        <th style="width:30%">First Name</th>
+                        <th style="width:30%">Last Name</th>
+                        <th style="width:40%">Email</th>
                     </tr>
                 </table>
             </div>
-            <div id="responseDiv" style="width:35%;display:table-cell">
+            <div id="responseDiv" style="width:40%;display:table-cell">
                 <h4>Response Contents</h4>
-                <pre id="preTag" style=""></pre>
+                <div id='preTag' style="background:#eee"></div>
             </div>
         </div>
     </body>
