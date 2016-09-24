@@ -29,7 +29,17 @@ var updatePage = function (rsps) {
         console.log(targetResponse);
         var pretty = '<dl>'
         for (let k of Object.keys(targetResponse)) {
-            pretty += '<dt>' + k + '</dt>' + '<dd>' + targetResponse[k] + '</dd>'
+            if (k === 'raw') {
+              var raw = targetResponse[k]
+              for (let innerk of Object.keys(raw)) {
+                pretty += '<dt>' + innerk + '</dt>'
+                          + '<dd>' + raw[innerk] + '</dd>'
+              }
+            } else {
+              pretty += '<dt>' + k + '</dt>' + '<dd>'
+                        + targetResponse[k]
+                        + '</dd>'
+            }
         }
         pretty += '</dl>'
         $('#preTag').html(pretty);
@@ -41,7 +51,7 @@ var updatePage = function (rsps) {
 var getResponses = function () {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:3000/recruitment/responses',
+        url: 'https://nuisepic.com/api/recruitment/responses',
         dataType: 'json',
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + jwt);
@@ -61,7 +71,7 @@ var getResponses = function () {
 var authenticate = function (username, password, callback) {
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:3000/authenticate',
+        url: 'https://nuisepic.com/api/authenticate',
         dataType: 'json',
         data: {
             username: username,
